@@ -3,7 +3,6 @@ pipeline {
 
     environment {
         dockerImage = ''
-        registry = 'nachiketj/pythondev'
     }
 
     stages {
