@@ -7,6 +7,11 @@ pipeline {
     }
 
     stages {
+        stage('Initialize') {
+            def dockerHome = tool 'myDocker'
+            env.PATH = "${dockerHome}/bin:${env.PATH}"
+        }
+        
         stage ('Checkout') {
             steps {
                 checkout([$class: 'GitSCM', branches: [[name: '**']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/nachieket/spring-petclinic']]])
