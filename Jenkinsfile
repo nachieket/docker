@@ -6,6 +6,7 @@ pipeline {
     environment {
         dockerImage = ''
         registry = 'nachiketj/pythondev'
+        registryCredential = 'dockerhub_id'
     }
 
     stages {
@@ -19,6 +20,16 @@ pipeline {
             steps {
                 script {
                     dockerImage = docker.build registry
+                }
+            }
+        }
+
+        stage ('Upload Image') {
+            steps {
+                script {
+                    docker.withRegistry('', registryCredential) {
+                        dockerImage.push()
+                    }
                 }
             }
         }
