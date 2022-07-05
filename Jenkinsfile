@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage ('Checkout') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '**']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/nachieket/spring-petclinic']]])
+                checkout([$class: 'GitSCM', branches: [[name: '**']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/nachieket/docker']]])
             }
         }
 
